@@ -1,0 +1,20 @@
+%{
+#include "hpp.hpp"
+%}
+%option yylineno
+%option noyywrap
+%%
+#[^\n]*			{}
+[A-Za-z0-9_.]+	TOC(Sym,SYM)
+
+\(				TOC(Op,LP)
+\)				TOC(Op,RP)
+\[				TOC(Op,LQ)
+\]				TOC(Op,RQ)
+\{				TOC(Op,LC)
+\}				TOC(Op,RC)
+
+\=				TOC(Op,EQ)
+
+[ \t\r\n]+		{}
+%%
